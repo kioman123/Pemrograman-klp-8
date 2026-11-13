@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct aplikasi_pencatat_uang {
+struct aplikasi_pencatat_uang{
     int id;
     char tanggal[11];
     char kategori[30];
@@ -9,25 +9,33 @@ struct aplikasi_pencatat_uang {
     long long nominal;
 };
 
+
+
 int main(){
 
-    struct aplikasi_pencatat_uang transaksi;
+    struct aplikasi_pencatat_uang transaksi[10];
     
-    // tempat untuk isi data
-    transaksi.id = 1;
-    transaksi.nominal = 25000;
+    // variabel untuk pengeluaran,pemasukan dan saldo
+    long long total_pemasukan = 0;
+    long long total_pengeluaran = 0;
+    long long saldo = 0;
 
-    strcpy(transaksi.tanggal,"15-10-2026");
-    strcpy(transaksi.kategori,"Makan Burger");
-    strcpy(transaksi.tipe,"pengeluaran");
+    // tempat untuk isi data
+    transaksi[0].id = 1;
+    transaksi[0].nominal = 25000;
+
+    strcpy(transaksi[0].tanggal,"15-10-2026");
+    strcpy(transaksi[0].kategori,"Makan Burger");
+    strcpy(transaksi[0].tipe,"pengeluaran");
 
     // tempat untuk menampilkan data
     printf("========== Transaksi Keuangan Irfan ==========\n");
-    printf("ID       : %d\n", transaksi.id);
-    printf("TANGGAL  : %s\n", transaksi.tanggal);
-    printf("KATEGORI : %s\n", transaksi.kategori);
-    printf("TIPE     : %s\n", transaksi.tipe);
-    printf("NOMINAL  : %s\n", transaksi.nominal);
-
+    for(int i = 0; i <1; i++){
+        printf("\nID : %d | ", transaksi[i].id);
+        printf("TANGGAL : %s | ", transaksi[i].tanggal);
+        printf("KATEGORI : %s | ", transaksi[i].kategori);
+        printf("TIPE : %s | ", transaksi[i].tipe);
+        printf("NOMINAL : Rp %lld", transaksi[i].nominal);
+    }
     return 0;
 }
