@@ -37,7 +37,7 @@ int main(){
     }
     
     //perulangan input
-    //dan printf dibawah perulangan untuk menampilkan transaksi ke-1 sampai ke-10
+    //dan printf dibawah perulangan untuk menampilkan transaksi ke-1 atau sampai ke-10
     for(int i = 0; i < jumlah; i++) {
         printf("\nTransaksi ke-%d\n", i + 1);
         transaksi[i].id = i + 1;
@@ -61,9 +61,6 @@ int main(){
         printf("KATEGORI : %s | ", transaksi[i].kategori);
         printf("TIPE : %s | ", transaksi[i].tipe);
         printf("NOMINAL : Rp %lld", transaksi[i].nominal);
-    }
-    return 0;
-}
     }
     return 0;
 }
