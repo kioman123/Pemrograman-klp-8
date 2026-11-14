@@ -20,22 +20,48 @@ int main(){
     long long total_pengeluaran = 0;
     long long saldo = 0;
 
-    // tempat untuk isi data
-    transaksi[0].id = 1;
-    transaksi[0].nominal = 25000;
+     char nama[45];
+    printf("Nama: ");
+    scanf("%s", nama);
 
-    strcpy(transaksi[0].tanggal,"15-10-2026");
-    strcpy(transaksi[0].kategori,"Makan Burger");
-    strcpy(transaksi[0].tipe,"pengeluaran");
+    // tempat untuk isi data
+    int jumlah;
+    printf("mau input berapa transaksi:");
+    scanf("%d", &jumlah);
+    
+    if (jumlah > 10) {
+        jumlah = 10;
+    }
+
+    for(int i = 0; i < jumlah; i++) {
+        printf("\nTransaksi ke-%d\n", i + 1);
+        transaksi[i].id = i + 1;
+
+        printf("Tanggal:");
+        scanf("%s", transaksi[i].tanggal);
+        printf("kategori: ");
+        scanf("%s", transaksi[i].kategori);
+        printf("Tipe (pemasukan/pengeluaran): ");
+        scanf("%s", transaksi[i].tipe);
+        printf("Nominal: ");
+        scanf("%lld", &transaksi[i].nominal);
+    }
+
+
+    //transaksi[0].id = 1;
+    //transaksi[0].nominal = 25000;
 
     // tempat untuk menampilkan data
-    printf("========== Transaksi Keuangan Irfan ==========\n");
-    for(int i = 0; i <1; i++){
+    printf("\n========== Transaksi Keuangan %s ==========\n", nama);
+    for(int i = 0; i < jumlah; i++){
         printf("\nID : %d | ", transaksi[i].id);
         printf("TANGGAL : %s | ", transaksi[i].tanggal);
         printf("KATEGORI : %s | ", transaksi[i].kategori);
         printf("TIPE : %s | ", transaksi[i].tipe);
         printf("NOMINAL : Rp %lld", transaksi[i].nominal);
+    }
+    return 0;
+}
     }
     return 0;
 }
