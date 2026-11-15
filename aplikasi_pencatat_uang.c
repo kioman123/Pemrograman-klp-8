@@ -51,6 +51,14 @@ int main(){
         scanf("%s", transaksi[i].tipe);
         printf("Nominal: ");
         scanf("%lld", &transaksi[i].nominal);
+
+        if (strcmp(transaksi[i].tipe, "pemasukan") == 0) {
+            total_pemasukan += transaksi[i].nominal;
+            saldo += transaksi[i].nominal;
+        } else if (strcmp(transaksi[i].tipe, "pengeluaran") == 0) {
+            total_pengeluaran += transaksi[i].nominal;
+            saldo -= transaksi[i].nominal;
+        }
     }
 
     // tempat untuk menampilkan data
@@ -60,7 +68,10 @@ int main(){
         printf("TANGGAL : %s | ", transaksi[i].tanggal);
         printf("KATEGORI : %s | ", transaksi[i].kategori);
         printf("TIPE : %s | ", transaksi[i].tipe);
-        printf("NOMINAL : Rp %lld", transaksi[i].nominal);
-    }
+        printf("NOMINAL : Rp %lld\n", transaksi[i].nominal);
+    } 
+    printf("\nTotal Pemasukan   : Rp %lld\n", total_pemasukan);
+    printf("Total Pengeluaran : Rp %lld\n", total_pengeluaran);
+    printf("Sisa Saldo        : Rp %lld\n", saldo);
     return 0;
 }
