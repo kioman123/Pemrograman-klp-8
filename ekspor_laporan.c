@@ -5,7 +5,7 @@ void eksporLaporanBulanan() {
     int jumlah = bacaSemuaTransaksi(&daftar);
 
     if (jumlah == 0) {
-       
+        printf("\nTidak ada data untuk diekspor.\n");
         return;
     }
 
