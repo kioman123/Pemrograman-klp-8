@@ -15,4 +15,13 @@ void eksporLaporanBulanan(){
         return;
     }
 
+    //Header kolom CSV
+    fprintf(fp, "ID, Tanggal, Tipe, Kategori, Nominal\n");
+
+    for(int i = 0; i < jumlah; i++){
+        fprintf(fp, "%d,%s,%s,%s,%.2f\n",
+                daftar[i].id, daftar[i].tanggal, daftar[i].tipe,
+                daftar[i].kategori, daftar[i].nominal);
+    }
+
 }
