@@ -8,4 +8,11 @@ void eksporLaporanBulanan(){
         printf("\nTidak ada data transaksi untuk diekspor.\n");
         return;
     }
+        FILE *fp = fopen(FILE_LAPORAN, "w");
+    if (!fp) {
+        perror("Gagal membuat file laporan CSV");
+        free(daftar);
+        return;
+    }
+
 }
