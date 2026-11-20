@@ -6,14 +6,9 @@
 #include <string.h>
 #include <time.h>
 
-#define FILE_BINARY "keuangan.bin"
-#define FILE_LAPORAN "laporan_bulanan.csv"
-
-typedef struct {
-    int id;
-    char tanggal[15];
-    char kategori[30];
-    char tipe[15];
+    char tanggal[15]; \\ Format: DD-MM-YYYY
+    char kategori[30]; \\Contoh: Makan, Transportasi, Gaji
+    char tipe[15]; \\ "Pemasukan" atau "Pengeluaran"
     double nominal;
 } CatatnKeuangan;
 
@@ -24,6 +19,16 @@ typedef struct {
     double sisaSaldo;
 } RingkasanSaldo
 
+int dapatkanldBerikutnya()
+int simpanTransaksiBinary(CatatanKeuangan data)
+int baca SemuaTransaksi(CatatanKeuangan **daftar)
+
+void tambahTransaksiMenu()
+void hitungRingkasan(CatatanKeuangan *daftar,int jumlah, RingkasanSaldo *hasil)
+void cetakKartuRingkasan(RingkasanSaldo ringkasan)
+void tampilkanRiwayatDanSaldo()
+
+void eksporLaporanBulanan()
 
     // tempat dimintanya data user
      char nama[45];
