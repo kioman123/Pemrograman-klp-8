@@ -17,6 +17,14 @@ typedef struct {
     double nominal;
 } CatatnKeuangan;
 
+typedef struct {
+    int jumlahTransaksi;
+    double totalPemasukan;
+    double totalPengeluaran;
+    double sisaSaldo;
+} RingkasanSaldo
+
+
     // tempat dimintanya data user
      char nama[45];
     printf("Nama: ");
