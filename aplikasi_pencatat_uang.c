@@ -30,6 +30,12 @@ void tampilkanRiwayatDanSaldo()
 
 void eksporLaporanBulanan()
 
+void dapatkanTanggalHariIni(char *buffer)
+void tampilkanBantuanCLI(const char *namaProgram)
+int prosesArgumenCLI(int argc, char *argv[])
+
+#endif
+
     // tempat dimintanya data user
      char nama[45];
     printf("Nama: ");
