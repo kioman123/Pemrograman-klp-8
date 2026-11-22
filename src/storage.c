@@ -15,3 +15,7 @@ if (!file){
 perror("Gagal membuka file binary");
 return 0;
 }
+size_t tertulis = fwrite(&data, sizeof(CatatanKeungan), 1, file);
+fclose(file);
+return tertulis == 1;
+}
