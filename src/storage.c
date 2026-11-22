@@ -32,4 +32,10 @@ if (jumlahData >0){
   *daftar = (CatatanKeungan *)malloc(jumlahData * sizeof(CatatanKeuangan));
 if (*daftar !=NULL){
   fread(*daftar, sizeof(CatatanKeuangan), jumlahData, file);
+} else{
+   jumlahData = 0;
+}
+}
+fclose(file);
+return jumlahData;
 }
