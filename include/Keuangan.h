@@ -24,4 +24,8 @@ typedef struct {
     double sisaSaldo;
 } RingkasanSaldo;
 
+int dapatkanIdBerikutnya();
+int simpanTransaksiBinary(CatatanKeuangan data);
+int bacaSemuaTransaksi(CatatanKeuangan **daftar);
+
 #endif
