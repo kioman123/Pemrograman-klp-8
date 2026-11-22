@@ -5,7 +5,6 @@ int main(int argc, char *argv[]) {
         return prosesArgumenCLI(argc, argv);
     }
 
-    #include "keuangan.h"
     int pilihan;
     do {
         printf("\n=== APLIKASI PENCATAT KEUANGAN PRIBADI ===\n");
