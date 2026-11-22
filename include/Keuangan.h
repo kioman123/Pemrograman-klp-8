@@ -1,6 +1,5 @@
-
-#ifndef KEUANGAN_H
-#define KEUANGAN_H
+#ifndef KEUANGAN H
+#define KEUANGAN H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,10 +11,10 @@
 
 typedef struct {
     int id;
-    char tanggal[15];      // Format: DD-MM-YYYY
-    char kategori[30];     // Contoh: Makan, Transportasi, Gaji
-    char tipe[15];         // "Pemasukan" atau "Pengeluaran"
+    char tanggal[15];
+    char kategori[30];
+    char tipe[15];
     double nominal;
-};
+} CatatanKeuangan;
 
 #endif
