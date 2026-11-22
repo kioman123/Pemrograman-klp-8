@@ -84,3 +84,4 @@ void tampilkanRiwayatDanSaldo() {
     cetakKartuRingkasan(ringkasan);             // Pass by value
 
     free(daftar);
+}
