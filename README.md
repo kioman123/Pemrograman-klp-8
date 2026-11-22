@@ -153,18 +153,24 @@ folder proyek tugas uas pemro yang memiliki folder include (Keuangan.h) serta fo
 ### 5.1 Kompilasi
 
 Jalankan perintah berikut dari folder tugas uas pemro:
+``` powershell
 gcc -Iinclude src/aplikasi_pencatat_uang.c src/cli.c src/ekspor_laporan.c src/storage.c src/transaksi.c -o pencatat_uang.exe
+```
 
 Jika proses kompilasi berhasil, file executable bernama pencatat_uang.exe akan
 dibuat.
 
 ### 5.2 Menjalankan Program
 
+``` powershell
 Windows PowerShell:
 .\pencatat_uang.exe
+```
 
+``` powershell
 Linux/macOS:
 ./pencatat_uang
+```
 
 Perintah tersebut menjalankan aplikasi melalui menu interaktif.
 
@@ -231,12 +237,6 @@ bawah.
 ### 6.2 Screenshot Program
 
 ![Screenshot output program](screenshot/hasil-ouput.png)
-
-> **Catatan:** Gambar di atas merupakan lokasi gambar yang harus
-> disediakan, bukan screenshot otomatis. Simpan screenshot asli program
-> dengan nama `hasil-program.png` di dalam folder `screenshots`.
-> Sebaiknya screenshot menampilkan menu atau proses penambahan
-> transaksi, riwayat transaksi, dan ringkasan saldo.
 
 ## 7. Catatan
 
