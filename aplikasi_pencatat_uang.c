@@ -16,7 +16,12 @@ int main(int argc, char *argv[]) {
         printf("Pilih menu: ");
 
         if (scanf("%d", &pilihan) != 1) {
-       
+            while (getchar() != '\n');
+            pilihan = -1;
+        }
+        getchar(); 
+    
+        switch (pilihan) {
             return 0;
 
 }
