@@ -22,6 +22,17 @@ void eksporLaporanBulanan(){
         fprintf(fp, "%d,%s,%s,%s,%.2f\n",
                 daftar[i].id, daftar[i].tanggal, daftar[i].tipe,
                 daftar[i].kategori, daftar[i].nominal);
-    }
+    }  
+    RingkasanSaldo ringkasan;
+    hitungRingkasan(daftar, jumlah, &ringkasan);
+
+    fprintf(fp, "\n,,,Jumlah Transaksi,%d\n", ringkasan.jumlahTransaksi);
+    fprintf(fp, ",,,Total Pemasukan,%.2f\n", ringkasan.totalPemasukan);
+    fprintf(fp, ",,,Total Pengeluaran,%.2f\n", ringkasan.totalPengeluaran);
+    fprintf(fp, ",,,Sisa Saldo,%.2f\n", ringkasan.sisaSaldo);
+
+    fclose(fp);
+    free(daftar);
+    printf("\n[OK] Laporan berhasil diekspor ke '%s'!\n", FILE_LAPORAN);
 
 }
