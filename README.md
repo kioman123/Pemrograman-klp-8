@@ -224,7 +224,7 @@ kategori terdiri dari beberapa kata, gunakan tanda kutip, misalnya
 
 ## 6. Contoh Output Program
 
-![Screenshot output program](screenshot/hasil-ouput.png)
+![Screenshot output program](screenshot/hasil_ouput.png)
 
 ### 6.1 Contoh Output CLI
 
