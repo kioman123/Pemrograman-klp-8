@@ -11,6 +11,12 @@ int main(int argc, char *argv[]) {
         printf("\n=== APLIKASI PENCATAT KEUANGAN PRIBADI ===\n");
         printf("1. Tambah Transaksi Baru\n");
         printf("2. Lihat Riwayat & Ringkasan Saldo\n");
-    
-        return 0;
+        printf("3. Ekspor Laporan Bulanan (.csv)\n");
+        printf("0. Keluar\n");
+        printf("Pilih menu: ");
+
+        if (scanf("%d", &pilihan) != 1) {
+       
+            return 0;
+
 }
