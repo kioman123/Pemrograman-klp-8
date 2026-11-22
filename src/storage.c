@@ -19,3 +19,8 @@ size_t tertulis = fwrite(&data, sizeof(CatatanKeungan), 1, file);
 fclose(file);
 return tertulis == 1;
 }
+//Mengalokasikan array struct secara dinamis lewat pointer
+int bacaSemuaTransaksi(CatatanKeungan **daftar){
+  FILE *file = fopen(FILE_BINARY, "rb");
+if (!file) return 0;
+
