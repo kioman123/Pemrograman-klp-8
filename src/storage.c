@@ -3,3 +3,8 @@ int dapatkanldBerikutnya(){
   FILE *file= fopen (FILE_BINARY, "rb");
   if (!file) return 1;
 
+fseek(file, 0, SEEK_END);
+long ukuranFile = ftell(file);
+fclose(file);
+return (ukuranFile / sizeof (CatatanKeungan))+ 1;
+}
