@@ -224,9 +224,7 @@ kategori terdiri dari beberapa kata, gunakan tanda kutip, misalnya
 
 ## 6. Contoh Output Program
 
-Tambahkan tangkapan layar hasil program pada folder `screenshots`,
-kemudian pastikan nama file dan lokasi gambar sesuai dengan tautan di
-bawah.
+![Screenshot output program](screenshot/hasil-ouput.png)
 
 ### 6.1 Contoh Output CLI
 
@@ -236,7 +234,12 @@ bawah.
 
 ### 6.2 Screenshot Program
 
-![Screenshot output program](screenshot/hasil-ouput.png)
+![Screenshot output program](screenshot/aplikasi_pencatat.png)
+![Screenshot output program](screenshot/cli.png)
+![Screenshot output program](screenshot/ekspor.png)
+![Screenshot output program](screenshot/keuangan.png)
+![Screenshot output program](screenshot/storage.png)
+![Screenshot output program](screenshot/transaksi.png)
 
 ## 7. Catatan
 
