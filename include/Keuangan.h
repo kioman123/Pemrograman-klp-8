@@ -17,4 +17,11 @@ typedef struct {
     double nominal;
 } CatatanKeuangan;
 
+typedef struct {
+    int jumlahTransaksi;
+    double totalPemasukan;
+    double totalPengeluaran;
+    double sisaSaldo;
+} RingkasanSaldo;
+
 #endif
