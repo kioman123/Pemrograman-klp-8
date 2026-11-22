@@ -1,5 +1,5 @@
-#ifndef KEUANGAN H
-#define KEUANGAN H
+#ifndef KEUANGAN_H
+#define KEUANGAN_H
 
 #include <stdio.h>
 #include <stdlib.h>
