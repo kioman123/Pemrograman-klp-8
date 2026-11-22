@@ -24,3 +24,8 @@ int bacaSemuaTransaksi(CatatanKeungan **daftar){
   FILE *file = fopen(FILE_BINARY, "rb");
 if (!file) return 0;
 
+fseek(file, 0, SEEK_END);
+long ukuranFile = ftell(file);
+int jumlahData = ukuranFile / sizeof(CatatanKeuangan);
+rewind(file);
+
