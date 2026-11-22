@@ -29,7 +29,7 @@ long ukuranFile = ftell(file);
 int jumlahData = ukuranFile / sizeof(CatatanKeuangan);
 rewind(file);
 if (jumlahData >0){
-  *daftar = (CatatanKeungan *)malloc(jumlahData * sizeof(CatatanKeuangan));
+  *daftar = (CatatanKeuangan *)malloc(jumlahData * sizeof(CatatanKeuangan));
 if (*daftar !=NULL){
   fread(*daftar, sizeof(CatatanKeuangan), jumlahData, file);
 } else{
