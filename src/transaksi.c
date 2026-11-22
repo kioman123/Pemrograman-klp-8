@@ -1,47 +1,86 @@
 #include "keuangan.h"
 
-int dapatkanIdBerikutnya() {
-    FILE *file = fopen(FILE_BINARY, "rb");
-    if (!file) return 1;
+void tambahTransaksiMenu() {
+    CatatanKeuangan baru;
+    baru.id = dapatkanIdBerikutnya();
 
-    fseek(file, 0, SEEK_END);
-    long ukuranFile = ftell(file);
-    fclose(file);
+    printf("\n--- Tambah Transaksi Baru ---\n");
+    printf("Tanggal (DD-MM-YYYY) [ketik 'today' untuk hari ini]: ");
+    fgets(baru.tanggal, sizeof(baru.tanggal), stdin);
+    baru.tanggal[strcspn(baru.tanggal, "\n")] = 0;
 
-    return (ukuranFile / sizeof(CatatanKeuangan)) + 1;
-}
-
-// Menerima struct Catatan keuangan
-int simpanTransaksiBinary(CatatanKeuangan data) {
-    FILE *file = fopen(FILE_BINARY, "ab");
-    if (!file) {
-        perror("Gagal membuka file binary");
-        return 0;
+    if (strcmp(baru.tanggal, "today") == 0) {
+        dapatkanTanggalHariIni(baru.tanggal);
     }
 
-    size_t tertulis = fwrite(&data, sizeof(CatatanKeuangan), 1, file);
-    fclose(file);
-    return tertulis == 1;
+    printf("Tipe (Pemasukan / Pengeluaran): ");
+    fgets(baru.tipe, sizeof(baru.tipe), stdin);
+    baru.tipe[strcspn(baru.tipe, "\n")] = 0;
+
+    printf("Kategori (contoh: Makan, Gaji, Transport): ");
+    fgets(baru.kategori, sizeof(baru.kategori), stdin);
+    baru.kategori[strcspn(baru.kategori, "\n")] = 0;
+
+    printf("Nominal (Rp): ");
+    while (scanf("%lf", &baru.nominal) != 1 || baru.nominal <= 0) {
+        while (getchar() != '\n');
+        printf("[!] Nominal tidak valid. Masukkan angka > 0: ");
+    }
+    getchar();
+
+    if (simpanTransaksiBinary(baru)) {
+        printf("[OK] Transaksi ID #%d berhasil disimpan!\n", baru.id);
+    } else {
+        printf("[ERROR] Gagal menyimpan transaksi.\n");
+    }
 }
 
-// Mengalokasikan array struct lewat pointer
-int bacaSemuaTransaksi(CatatanKeuangan **daftar) {
-    FILE *file = fopen(FILE_BINARY, "rb");
-    if (!file) return 0;
+// Pass by pointer: memodifikasi isi struct RingkasanSaldo secara langsung
+void hitungRingkasan(CatatanKeuangan *daftar, int jumlah, RingkasanSaldo *hasil) {
+    hasil->jumlahTransaksi = jumlah;
+    hasil->totalPemasukan = 0;
+    hasil->totalPengeluaran = 0;
 
-    fseek(file, 0, SEEK_END);
-    long ukuranFile = ftell(file);
-    int jumlahData = ukuranFile / sizeof(CatatanKeuangan);
-    rewind(file);
-
-    if (jumlahData > 0) {
-        *daftar = (CatatanKeuangan *)malloc(jumlahData * sizeof(CatatanKeuangan));
-        if (*daftar != NULL) {
-            fread(*daftar, sizeof(CatatanKeuangan), jumlahData, file);
+    for (int i = 0; i < jumlah; i++) {
+        if (strcasecmp(daftar[i].tipe, "Pemasukan") == 0) {
+            hasil->totalPemasukan += daftar[i].nominal;
         } else {
-            jumlahData = 0;
+            hasil->totalPengeluaran += daftar[i].nominal;
         }
     }
+    hasil->sisaSaldo = hasil->totalPemasukan - hasil->totalPengeluaran;
+}
 
-    fclose(file);
-    return jumlahData;
+// Pass by value: menerima salinan struct RingkasanSaldo untuk ditampilkan
+void cetakKartuRingkasan(RingkasanSaldo ringkasan) {
+    printf("------------------------------------------------------------------\n");
+    printf("Jumlah Transaksi : %d\n", ringkasan.jumlahTransaksi);
+    printf("Total Pemasukan  : Rp %.2f\n", ringkasan.totalPemasukan);
+    printf("Total Pengeluaran: Rp %.2f\n", ringkasan.totalPengeluaran);
+    printf("Sisa Saldo       : Rp %.2f\n", ringkasan.sisaSaldo);
+    printf("------------------------------------------------------------------\n");
+}
+
+void tampilkanRiwayatDanSaldo() {
+    CatatanKeuangan *daftar = NULL;
+    int jumlah = bacaSemuaTransaksi(&daftar);
+
+    if (jumlah == 0) {
+        printf("\nBelum ada data transaksi tersimpan.\n");
+        return;
+    }
+
+    printf("\n%-4s | %-12s | %-13s | %-15s | %s\n", "ID", "Tanggal", "Tipe", "Kategori", "Nominal");
+    printf("------------------------------------------------------------------\n");
+
+    for (int i = 0; i < jumlah; i++) {
+        printf("%-4d | %-12s | %-13s | %-15s | Rp %.2f\n",
+               daftar[i].id, daftar[i].tanggal, daftar[i].tipe,
+               daftar[i].kategori, daftar[i].nominal);
+    }
+
+    RingkasanSaldo ringkasan;
+    hitungRingkasan(daftar, jumlah, &ringkasan); // Pass by pointer
+    cetakKartuRingkasan(ringkasan);             // Pass by value
+
+    free(daftar);
